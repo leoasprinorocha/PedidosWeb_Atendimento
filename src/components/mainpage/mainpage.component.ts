@@ -22,7 +22,7 @@ export class MainpageComponent implements OnInit {
   ngOnInit() {
     var usuarioEstaAutenticado = this.loginService.getUserFromLocalStorage();
     if (usuarioEstaAutenticado.accessToken) {
-        alert('logado com cache')
+
     } else {
       this.router.navigate(['']);
     }
