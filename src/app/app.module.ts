@@ -11,6 +11,8 @@ import { MainpageModule } from '../components/mainpage/mainpage/mainpage.module'
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UtilsModule } from './utils/utils.module';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { PedidosModule } from '../components/pedidos/pedidos/pedidos.module';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     MatInputModule,
     RouterModule,
     LoginModule,
+    PedidosModule,
     MainpageModule,
     HttpClientModule,
     UtilsModule

@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
+import { UtilsModule } from '../../../app/utils/utils.module';
 
 @NgModule({
   declarations: [MainpageComponent],
@@ -15,7 +16,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    UtilsModule
   ],
   exports: [MainpageComponent],
 })

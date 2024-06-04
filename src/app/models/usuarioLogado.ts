@@ -1,8 +1,10 @@
-export class UsuarioLogado{
-    accessToken: string | undefined;
-    expiresIn: number | undefined;
-    id: string | undefined;
-    email: string | undefined;
-    name: string | undefined;
-    idAdesao: string | undefined;
+import { IUsuarioLogado } from "../IndexedDB_Context/models/IUsuarioLogado";
+
+export class UsuarioLogado implements IUsuarioLogado{
+    accessToken!: string;
+    expiresIn!: number;
+    id!: string;
+    email!: string;
+    name!: string;
+    idAdesao!: string;
 }

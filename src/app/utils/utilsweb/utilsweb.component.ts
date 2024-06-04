@@ -1,4 +1,5 @@
 import { Component, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-utilsweb',
@@ -10,7 +11,15 @@ import { Component, Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UtilswebComponent {
+  constructor(private router: Router){
+
+  }
+
   atualizaValorSelect(event: any, data:any){
     console.log(event);
+  }
+
+  redirecionaRota(url: string){
+    this.router.navigate([url]);
   }
 }
