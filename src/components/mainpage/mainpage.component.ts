@@ -7,16 +7,19 @@ import { UtilswebComponent } from '../../app/utils/utilsweb/utilsweb.component';
 @Injectable({
   providedIn: 'root',
 })
-
 @Component({
   selector: 'app-mainpage',
   standalone: false,
   templateUrl: './mainpage.component.html',
   styleUrl: './mainpage.component.css',
 })
-export class MainpageComponent implements OnInit {
-  usuarioLogado: UsuarioLogado = new UsuarioLogado;
-  constructor(private router: Router, private loginService: LoginService, private utilWebComponent: UtilswebComponent) {
+export class MainpageComponent {
+  usuarioLogado: UsuarioLogado = new UsuarioLogado();
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+    private utilWebComponent: UtilswebComponent
+  ) {
     const navigation = this.router.getCurrentNavigation();
     const navigationObject = navigation?.extras.state as {
       usuario: UsuarioLogado;
@@ -26,11 +29,9 @@ export class MainpageComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-
-  }
-
-  redirecionaRota(url: string){
+  redirecionaRota(url: string) {
     this.utilWebComponent.redirecionaRota(url);
   }
+
+
 }

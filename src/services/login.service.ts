@@ -4,12 +4,17 @@ import { BehaviorSubject, Observable, map, toArray } from 'rxjs';
 import { UsuarioLogado } from '../app/models/usuarioLogado';
 import { AppComponent } from '../app/app.component';
 import { db } from '../app/IndexedDB_Context/db';
+import { NgxIndexedDBService } from 'ngx-indexed-db';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(private httpClient: HttpClient) {}
+  usuarioCache: UsuarioLogado = new UsuarioLogado();
+  constructor(
+    private httpClient: HttpClient,
+    private dbService: NgxIndexedDBService
+  ) {}
 
   autenticar(email: string, password: string): Observable<UsuarioLogado> {
     return this.httpClient.get<UsuarioLogado>(
@@ -18,20 +23,13 @@ export class LoginService {
   }
 
   setUserToCache(usuarioLogado: UsuarioLogado) {
-    this.getUserFromCache().then(a => {
-      if (a.length === 0) {
-        db.usuariosLogado.add(usuarioLogado);
-      }
+    this.dbService.add('usuario', usuarioLogado).subscribe((b) => {
+      console.log(`Usuário adicionado cache ${b}`);
     });
-
-
-
   }
 
-  getUserFromCache() : Promise<UsuarioLogado[]> {
-
-    return db.table('usuariosLogado').toArray();
-
+  getUserFromCache(): Observable<any> {
+    return this.dbService.getAll('usuario');
   }
 
   deleteUserFromCache() {

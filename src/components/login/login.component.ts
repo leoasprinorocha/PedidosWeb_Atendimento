@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
   usuarioAutenticado$: UsuarioLogado | undefined;
 
   ngOnInit() {
-    this.loginService.getUserFromCache().then((a) => {
-      if (a.length > 0 && a[0].accessToken) {
+    this.loginService.getUserFromCache().subscribe((a) => {
+      if (a.lenght > 0) {
         this.router.navigate(['pedidos']);
       } else {
         this.router.navigate(['']);
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         if (data) {
           this.usuarioAutenticado$ = data;
           this.loginService.setUserToCache(this.usuarioAutenticado$);
-          alert(`Bem vindo ${this.usuarioAutenticado$.name}`);
+          alert(`Bem vindo ${data.name}`);
           this.router.navigate(['pedidos']);
         }
       });

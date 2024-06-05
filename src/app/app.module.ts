@@ -12,7 +12,25 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UtilsModule } from './utils/utils.module';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { PedidosModule } from '../components/pedidos/pedidos/pedidos.module';
+import { NgxIndexedDBModule, DBConfig } from 'ngx-indexed-db';
 
+
+const dbConfig: DBConfig  = {
+  name: 'GerenciaFoodDB',
+  version: 1,
+  objectStoresMeta: [{
+    store: 'usuario',
+    storeConfig: { keyPath: 'id', autoIncrement: false },
+    storeSchema: [
+      { name: 'accessToken', keypath: 'accessToken', options: { unique: false } },
+      { name: 'expiresIn', keypath: 'expiresIn', options: { unique: false } },
+      { name: 'id', keypath: 'id', options: { unique: true } },
+      { name: 'email', keypath: 'email', options: { unique: false } },
+      { name: 'name', keypath: 'name', options: { unique: false } },
+      { name: 'idAdesao', keypath: 'idAdesao', options: { unique: false } }
+    ]
+  }]
+};
 
 @NgModule({
   declarations: [
@@ -30,7 +48,8 @@ import { PedidosModule } from '../components/pedidos/pedidos/pedidos.module';
     PedidosModule,
     MainpageModule,
     HttpClientModule,
-    UtilsModule
+    UtilsModule,
+    NgxIndexedDBModule.forRoot(dbConfig)
   ],
   providers: [provideAnimations(),
     {

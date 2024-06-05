@@ -1,5 +1,6 @@
 .texto-status-pedido{
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 font-weight: bolder;
-color: brown;
+color: red;
+font-size: 20px;
 }

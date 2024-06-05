@@ -7,8 +7,8 @@
     <div class="collapse navbar-collapse mt-2" id="navbarNav">
       <button mat-flat-button color="primary" [matMenuTriggerFor]="menu">Atendimento</button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>Pedidos</button>
-        <button mat-menu-item class="mt-2">Caixa</button>
+        <button mat-menu-item (click)="redirecionaRota('pedidos')">Pedidos</button>
+        <button mat-menu-item (click)="redirecionaRota('')"  class="mt-2">Caixa</button>
       </mat-menu>
 
       <button mat-flat-button color="primary" style="margin-left: 10px;" [matMenuTriggerFor]="relatorio">Relatório</button>

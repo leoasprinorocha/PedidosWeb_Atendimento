@@ -9,5 +9,8 @@ export class PedidoCompleto {
   mesa!: string;
   valorTotalString!: string;
   idPedido!: string;
+  idMesa!: string;
+  idAdesao!: string;
+  idStatusPedido!: string;
   produtos!: PedidoProdutoSimplificado[];
 }
