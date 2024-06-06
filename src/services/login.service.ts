@@ -25,6 +25,7 @@ export class LoginService {
   setUserToCache(usuarioLogado: UsuarioLogado) {
     this.dbService.add('usuario', usuarioLogado).subscribe((b) => {
       console.log(`Usuário adicionado cache ${b}`);
+      this.usuarioCache = usuarioLogado;
     });
   }
 
